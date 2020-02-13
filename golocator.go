@@ -52,13 +52,20 @@ func (g *GoLocatorService) FindCountryByIso3(countryCode string) (Country, error
 	return Country{}, errors.New("country not found")
 }
 
+func (g *GoLocatorService) FindStates(country Country) []string {
+	var result []string
+	for state, _ := range country.States {
+		result = append(result, state)
+	}
+	return result
+}
+
 func (g *GoLocatorService) FindCities(country Country) []string {
-	var cities []string
-	for _, state := range country.States {
-		for _, city := range state {
+	var result []string
+	for _, cities := range country.States {
+		for _, city := range cities {
 			cities = append(cities, city)
 		}
-
 	}
-	return cities
+	return result
 }
