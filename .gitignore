@@ -1,0 +1,9 @@
+.DS_Store
+*.test
+data*/
+coverage.out
+packages/
+
+# Ignore IDE folders
+.idea/
+.vscode/
